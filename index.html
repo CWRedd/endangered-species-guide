@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgia Wildlife Species Guide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1a1a1a;
+        color: #f5f5f5;
+      }
+    }
+
+    .header {
+      padding: 32px 24px;
+      border-bottom: 1px solid #e5e5e5;
+      margin-bottom: 32px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .header {
+        border-bottom-color: #333;
+      }
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .header p {
+        color: #999;
+      }
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 32px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .section h2 {
+        color: #999;
+      }
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .info-card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #22c55e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-card {
+        background: #2a2a2a;
+      }
+    }
+
+    .info-card.invasive {
+      border-left-color: #ef4444;
+    }
+
+    .info-card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 12px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+    }
+
+    .invasive .badge {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+
+    .info-card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-card p {
+        color: #999;
+      }
+    }
+
+    .scientific {
+      font-style: italic;
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .scientific {
+        color: #666;
+      }
+    }
+
+    .resource-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .resource-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 13px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .resource-btn {
+        background: #333;
+        border-color: #555;
+        color: #f5f5f5;
+      }
+    }
+
+    .resource-btn:hover {
+      background: #f0f0f0;
+      border-color: #999;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .resource-btn:hover {
+        background: #444;
+        border-color: #666;
+      }
+    }
+
+    .species-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .species-item {
+      background: #f9f9f9;
+      padding: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #e5e5e5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .species-item {
+        background: #2a2a2a;
+        border-color: #333;
+      }
+    }
+
+    .species-item:hover {
+      border-color: #999;
+      transform: translateY(-2px);
+    }
+
+    .species-item h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .species-item .scientific {
+      margin-bottom: 10px;
+    }
+
+    .species-item p {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .species-item p {
+        color: #999;
+      }
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .stat-box {
+      background: #f9f9f9;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .stat-box {
+        background: #2a2a2a;
+      }
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #666;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .stat-label {
+        color: #999;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .quick-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Georgia Wildlife Species Guide</h1>
+  <p>A comprehensive resource on invasive and native species for AP Environmental Science</p>
+</div>
+
+<div class="content">
+  <div class="quick-stats">
+    <div class="stat-box">
+      <div class="stat-number">28</div>
+      <div class="stat-label">Documented invasive species</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">~380</div>
+      <div class="stat-label">Native bird species</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">~70</div>
+      <div class="stat-label">Native reptile species</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Invasive species in Georgia</h2>
+    <p style="color: #666; margin-bottom: 20px;">Species that have been introduced to Georgia and pose threats to native ecosystems and biodiversity.</p>
+    
+    <div class="info-grid">
+      <div class="info-card invasive">
+        <span class="badge">Flora</span>
+        <h3>Japanese Honeysuckle</h3>
+        <p class="scientific">Lonicera japonica</p>
+        <p>A fast-growing vine that covers native vegetation and prevents seedling growth. One of Georgia's most problematic invasive plants.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/48547-Lonicera-japonica" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.invasivespeciesinfo.gov/" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="info-card invasive">
+        <span class="badge">Fauna</span>
+        <h3>Feral Hog</h3>
+        <p class="scientific">Sus scrofa</p>
+        <p>Causes significant damage to forests and wetlands through rooting behavior. Competes with native wildlife for resources and destroys habitat.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/41693-Sus-scrofa" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.gohunt.com/read/detail/feral-hogs" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="info-card invasive">
+        <span class="badge">Aquatic</span>
+        <h3>Lionfish</h3>
+        <p class="scientific">Pterois volitans / P. miles</p>
+        <p>Predatory fish found in coastal Georgia waters. No natural predators; preys on native fish and reduces biodiversity in marine ecosystems.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/2294-Pterois" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.noaa.gov/" target="_blank">NOAA Resources</a>
+        </div>
+      </div>
+
+      <div class="info-card invasive">
+        <span class="badge">Flora</span>
+        <h3>Kudzu</h3>
+        <p class="scientific">Pueraria montana</p>
+        <p>A rapidly spreading vine that smothers native plants and trees. Can grow up to one foot per day during growing season.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/60610-Pueraria-montana" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.invasivespeciesinfo.gov/" target="_blank">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Native species of Georgia</h2>
+    <p style="color: #666; margin-bottom: 20px;">Common species naturally found in Georgia ecosystems.</p>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="badge">Fauna</span>
+        <h3>Eastern Box Turtle</h3>
+        <p class="scientific">Terrapene carolina</p>
+        <p>A terrestrial turtle found throughout Georgia. Important for seed dispersal and population health is a good indicator of forest ecosystem quality.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/21338-Terrapene-carolina" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.georgiaaudubon.org/" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="badge">Fauna</span>
+        <h3>Black Bear</h3>
+        <p class="scientific">Ursus americanus</p>
+        <p>Georgia's largest land mammal. Populations in the Appalachian region are recovering. An apex predator and important part of forest ecosystems.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/43331-Ursus-americanus" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.georgiawildlife.com/" target="_blank">Georgia Wildlife</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="badge">Flora</span>
+        <h3>Southern Magnolia</h3>
+        <p class="scientific">Magnolia grandiflora</p>
+        <p>A native evergreen tree with large fragrant flowers. Important for wildlife habitat and commonly found in Georgia's mixed forests.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/53818-Magnolia-grandiflora" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.nwf.org/" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="badge">Fauna</span>
+        <h3>Red-tailed Hawk</h3>
+        <p class="scientific">Buteo jamaicensis</p>
+        <p>A large raptor and common sight in Georgia. Uses open areas and forests for hunting. Excellent indicator of habitat health.</p>
+        <div class="resource-links">
+          <a class="resource-btn" href="https://www.inaturalist.org/taxa/3791-Buteo-jamaicensis" target="_blank">View on iNaturalist</a>
+          <a class="resource-btn" href="https://www.allaboutbirds.org/" target="_blank">All About Birds</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Resources & links</h2>
+    <div class="species-list">
+      <div class="species-item">
+        <h4>iNaturalist</h4>
+        <p>Citizen science platform where you can upload observations and help document Georgia's biodiversity in real-time.</p>
+        <a class="resource-btn" href="https://www.inaturalist.org/places/georgia" target="_blank">Georgia observations</a>
+      </div>
+      <div class="species-item">
+        <h4>Georgia Department of Natural Resources</h4>
+        <p>Official state resource for wildlife management, invasive species information, and conservation efforts.</p>
+        <a class="resource-btn" href="https://www.georgiawildlife.com/" target="_blank">Visit DNR</a>
+      </div>
+      <div class="species-item">
+        <h4>The Nature Conservancy</h4>
+        <p>Global conservation organization working in Georgia to protect natural habitats and native species.</p>
+        <a class="resource-btn" href="https://www.nature.org/en-us/get-involved/how-to-help/" target="_blank">Learn more</a>
+      </div>
+      <div class="species-item">
+        <h4>USDA Invasive Species Info</h4>
+        <p>Comprehensive national database of invasive species with detailed profiles and management strategies.</p>
+        <a class="resource-btn" href="https://www.invasivespeciesinfo.gov/" target="_blank">Explore database</a>
+      </div>
+      <div class="species-item">
+        <h4>Georgia Audubon Society</h4>
+        <p>Organization dedicated to bird conservation and habitat protection across Georgia.</p>
+        <a class="resource-btn" href="https://www.georgiaaudubon.org/" target="_blank">Visit website</a>
+      </div>
+      <div class="species-item">
+        <h4>EPA Invasive Species</h4>
+        <p>Federal resource on invasive species impacts, prevention, and control methods.</p>
+        <a class="resource-btn" href="https://www.epa.gov/invasive-species" target="_blank">EPA resources</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
