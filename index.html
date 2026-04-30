@@ -13,28 +13,45 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #2a2a2a;
-      background: #f5f7fa;
+      color: #1a1a1a;
+      background: #fff;
       line-height: 1.6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1a1a1a;
+        color: #f5f5f5;
+      }
     }
 
     .header {
       padding: 32px 24px;
-      border-bottom: 1px solid #e0e8f0;
+      border-bottom: 1px solid #e5e5e5;
       margin-bottom: 32px;
-      background: #fafbfc;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .header {
+        border-bottom-color: #333;
+      }
     }
 
     .header h1 {
       font-size: 28px;
       margin-bottom: 8px;
       font-weight: 500;
-      color: #1a1a1a;
     }
 
     .header p {
-      color: #7a8a9a;
+      color: #666;
       font-size: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .header p {
+        color: #999;
+      }
     }
 
     .content {
@@ -53,11 +70,13 @@
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #5a6a7a;
+      color: #666;
     }
 
-    .section > p {
-      color: #7a8a9a;
+    @media (prefers-color-scheme: dark) {
+      .section h2 {
+        color: #999;
+      }
     }
 
     .info-grid {
@@ -68,22 +87,26 @@
     }
 
     .info-card {
-      background: #ffffff;
+      background: #f9f9f9;
       padding: 20px;
       border-radius: 12px;
-      border-left: 4px solid #3fa796;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #22c55e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-card {
+        background: #2a2a2a;
+      }
     }
 
     .info-card.invasive {
-      border-left-color: #d97f6e;
+      border-left-color: #ef4444;
     }
 
     .info-card h3 {
       font-size: 16px;
       margin-bottom: 12px;
       font-weight: 500;
-      color: #1a1a1a;
     }
 
     .badge {
@@ -92,26 +115,38 @@
       border-radius: 20px;
       font-size: 12px;
       margin-bottom: 12px;
-      background: #e8f5f1;
-      color: #2d8f7f;
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
     }
 
     .invasive .badge {
-      background: #fde8e6;
-      color: #c9634a;
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
     }
 
     .info-card p {
       font-size: 14px;
-      color: #5a6a7a;
+      color: #666;
       margin-bottom: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-card p {
+        color: #999;
+      }
     }
 
     .scientific {
       font-style: italic;
       font-size: 13px;
-      color: #8a9aaa;
+      color: #999;
       margin-bottom: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .scientific {
+        color: #666;
+      }
     }
 
     .resource-links {
@@ -123,20 +158,34 @@
     .resource-btn {
       display: inline-block;
       padding: 8px 14px;
-      background: #f0f4f8;
-      border: 1px solid #d0dce8;
+      background: #fff;
+      border: 1px solid #ddd;
       border-radius: 6px;
       text-decoration: none;
-      color: #2a4a6a;
+      color: #1a1a1a;
       font-size: 13px;
       transition: all 0.2s;
       cursor: pointer;
     }
 
+    @media (prefers-color-scheme: dark) {
+      .resource-btn {
+        background: #333;
+        border-color: #555;
+        color: #f5f5f5;
+      }
+    }
+
     .resource-btn:hover {
-      background: #e0eaf4;
-      border-color: #a0b5cc;
-      color: #1a3a5a;
+      background: #f0f0f0;
+      border-color: #999;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .resource-btn:hover {
+        background: #444;
+        border-color: #666;
+      }
     }
 
     .species-list {
@@ -147,26 +196,30 @@
     }
 
     .species-item {
-      background: #ffffff;
+      background: #f9f9f9;
       padding: 16px;
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
-      border: 1px solid #e0e8f0;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e5e5e5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .species-item {
+        background: #2a2a2a;
+        border-color: #333;
+      }
     }
 
     .species-item:hover {
-      border-color: #b0c0d0;
+      border-color: #999;
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     }
 
     .species-item h4 {
       font-size: 15px;
       margin-bottom: 4px;
       font-weight: 500;
-      color: #1a1a1a;
     }
 
     .species-item .scientific {
@@ -175,8 +228,14 @@
 
     .species-item p {
       font-size: 13px;
-      color: #7a8a9a;
+      color: #666;
       margin-bottom: 10px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .species-item p {
+        color: #999;
+      }
     }
 
     .quick-stats {
@@ -187,24 +246,33 @@
     }
 
     .stat-box {
-      background: #ffffff;
+      background: #f9f9f9;
       padding: 16px;
       border-radius: 8px;
       text-align: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e8f0f8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .stat-box {
+        background: #2a2a2a;
+      }
     }
 
     .stat-number {
       font-size: 24px;
       font-weight: 500;
       margin-bottom: 4px;
-      color: #1a1a1a;
     }
 
     .stat-label {
       font-size: 13px;
-      color: #7a8a9a;
+      color: #666;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .stat-label {
+        color: #999;
+      }
     }
 
     @media (max-width: 768px) {
@@ -243,7 +311,7 @@
 
   <div class="section">
     <h2>Invasive species in Georgia</h2>
-    <p style="color: #7a8a9a; margin-bottom: 20px;">Species that have been introduced to Georgia and pose threats to native ecosystems and biodiversity.</p>
+    <p style="color: #666; margin-bottom: 20px;">Species that have been introduced to Georgia and pose threats to native ecosystems and biodiversity.</p>
     
     <div class="info-grid">
       <div class="info-card invasive">
@@ -294,7 +362,7 @@
 
   <div class="section">
     <h2>Native species of Georgia</h2>
-    <p style="color: #7a8a9a; margin-bottom: 20px;">Common species naturally found in Georgia ecosystems.</p>
+    <p style="color: #666; margin-bottom: 20px;">Common species naturally found in Georgia ecosystems.</p>
     
     <div class="info-grid">
       <div class="info-card">
