@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Species - Georgia Wildlife Guide</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .report-form {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #f9f9f9;
+      padding: 24px;
+      border-radius: 12px;
+      border-left: 4px solid #6366f1;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .report-form {
+        background: #2a2a2a;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-group label {
+        color: #f5f5f5;
+      }
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        background: #1a1a1a;
+        border-color: #555;
+        color: #f5f5f5;
+      }
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .submit-btn {
+      background: #6366f1;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #4f46e5;
+    }
+
+    .form-help {
+      font-size: 13px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-help {
+        color: #666;
+      }
+    }
+
+    .form-section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #e5e5e5;
+      padding-bottom: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-section-title {
+        color: #f5f5f5;
+        border-bottom-color: #333;
+      }
+    }
+
+    .report-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .report-option {
+      padding: 16px;
+      border: 2px solid #e5e5e5;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .report-option {
+        border-color: #333;
+      }
+    }
+
+    .report-option:hover {
+      border-color: #6366f1;
+      background: rgba(99, 102, 241, 0.05);
+    }
+
+    .report-option input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .report-option label {
+      cursor: pointer;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">Georgia Wildlife</a>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="invasive-species.html" class="nav-link">Invasive Species</a></li>
+      <li><a href="native-species.html" class="nav-link">Native Species</a></li>
+      <li><a href="identify-species.html" class="nav-link">Identify Species</a></li>
+      <li><a href="report-species.html" class="nav-link active">Report Species</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="header">
+  <h1>Report a Species Sighting</h1>
+  <p>Submit your observation to help track Georgia's wildlife and invasive species</p>
+</div>
+
+<div class="content">
+  <div class="section">
+    <h2>How to Report</h2>
+    <p style="color: #666; margin-bottom: 20px;">
+      Have you spotted an organism in Georgia? Use the form below to gather your information, then submit your observation 
+      to the appropriate database to contribute to citizen science research and invasive species tracking.
+    </p>
+  </div>
+
+  <div class="report-form">
+    <form id="speciesForm">
+      <div class="form-section-title">Observation Details</div>
+
+      <div class="form-group">
+        <label for="speciesName">Species Name or Description *</label>
+        <input type="text" id="speciesName" name="speciesName" required placeholder="e.g., Red-tailed Hawk, Feral Hog, Japanese Honeysuckle">
+        <div class="form-help">Enter the common or scientific name if you know it, or describe what you saw</div>
+      </div>
+
+      <div class="form-group">
+        <label for="speciesType">Type of Organism *</label>
+        <select id="speciesType" name="speciesType" required>
+          <option value="">-- Select a type --</option>
+          <option value="bird">Bird</option>
+          <option value="mammal">Mammal</option>
+          <option value="reptile">Reptile</option>
+          <option value="amphibian">Amphibian</option>
+          <option value="fish">Fish</option>
+          <option value="insect">Insect/Spider</option>
+          <option value="plant">Plant/Flora</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="isInvasive">Is this an invasive species? *</label>
+        <select id="isInvasive" name="isInvasive" required>
+          <option value="">-- Not sure --</option>
+          <option value="invasive">Yes, I think it's invasive</option>
+          <option value="native">No, I think it's native</option>
+          <option value="unsure">I'm not sure</option>
+        </select>
+      </div>
+
+      <div class="form-section-title">Location & Date</div>
+
+      <div class="form-group">
+        <label for="location">Location (Georgia County or City) *</label>
+        <input type="text" id="location" name="location" required placeholder="e.g., Fulton County, Atlanta, Athens">
+        <div class="form-help">The more specific the better for tracking purposes</div>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date Spotted *</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="time">Time (Optional)</label>
+        <input type="time" id="time" name="time">
+      </div>
+
+      <div class="form-section-title">Details</div>
+
+      <div class="form-group">
+        <label for="habitat">Habitat/Environment *</label>
+        <select id="habitat" name="habitat" required>
+          <option value="">-- Select habitat --</option>
+          <option value="forest">Forest</option>
+          <option value="grassland">Grassland/Field</option>
+          <option value="wetland">Wetland/Marsh</option>
+          <option value="water">Water/Aquatic</option>
+          <option value="urban">Urban/Suburban</option>
+          <option value="agricultural">Agricultural</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description (Optional)</label>
+        <textarea id="description" name="description" placeholder="Describe size, color, behavior, or any distinctive features..."></textarea>
+        <div class="form-help">Include details like size, color patterns, behavior, or anything else distinctive</div>
+      </div>
+
+      <div class="form-group">
+        <label for="photoUrl">Photo URL (Optional)</label>
+        <input type="url" id="photoUrl" name="photoUrl" placeholder="https://example.com/photo.jpg">
+        <div class="form-help">If you have a photo uploaded elsewhere, paste the direct link here</div>
+      </div>
+
+      <div class="form-section-title">Contact Information</div>
+
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com">
+        <div class="form-help">We may contact you if we need more information about your sighting</div>
+      </div>
+
+      <div class="form-section-title">Where to Submit</div>
+
+      <div class="form-group">
+        <label>Submit to Database *</label>
+        <div class="report-options">
+          <div class="report-option">
+            <label>
+              <input type="radio" name="submitTo" value="inaturalist" checked>
+              <strong>iNaturalist</strong><br>
+              <small>Citizen science platform</small>
+            </label>
+          </div>
+          <div class="report-option">
+            <label>
+              <input type="radio" name="submitTo" value="eddmaps">
+              <strong>EDDMapS</strong><br>
+              <small>Invasive species tracking</small>
+            </label>
+          </div>
+          <div class="report-option">
+            <label>
+              <input type="radio" name="submitTo" value="dnr">
+              <strong>Georgia DNR</strong><br>
+              <small>State wildlife agency</small>
+            </label>
+          </div>
+          <div class="report-option">
+            <label>
+              <input type="radio" name="submitTo" value="multiple">
+              <strong>All Databases</strong><br>
+              <small>Multiple submissions</small>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" name="consent" required>
+          I understand my observation will be used for scientific research and conservation efforts
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Prepare Submission</button>
+    </form>
+  </div>
+
+  <div class="section" style="margin-top: 40px;">
+    <h2>What Happens Next?</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>1. Review Your Data</h3>
+        <p>Check that all information is accurate and complete. Photos and precise locations are especially helpful.</p>
+      </div>
+      <div class="info-card">
+        <h3>2. Submit to Database</h3>
+        <p>You'll be directed to iNaturalist, EDDMapS, or the Georgia DNR to complete your official submission.</p>
+      </div>
+      <div class="info-card">
+        <h3>3. Community Review</h3>
+        <p>Other naturalists and experts will help verify your identification and add insights to your observation.</p>
+      </div>
+      <div class="info-card">
+        <h3>4. Contribute to Science</h3>
+        <p>Your data helps track species populations, monitor invasive species spread, and inform conservation efforts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('speciesForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Collect form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Determine which database to use
+    let redirectUrl = '';
+    
+    if (data.submitTo === 'inaturalist' || data.submitTo === 'multiple') {
+      redirectUrl = buildiNaturalistUrl(data);
+      window.open(redirectUrl, '_blank');
+    }
+    
+    if (data.submitTo === 'eddmaps' || data.submitTo === 'multiple') {
+      setTimeout(() => {
+        window.open('https://www.eddmaps.org/', '_blank');
+      }, 500);
+    }
+    
+    if (data.submitTo === 'dnr' || data.submitTo === 'multiple') {
+      setTimeout(() => {
+        window.open('https://www.georgiawildlife.com/', '_blank');
+      }, 1000);
+    }
+    
+    // Store in localStorage for future reference
+    localStorage.setItem('lastSubmission', JSON.stringify(data));
+    
+    // Show confirmation
+    alert(`Your submission details have been prepared. You'll be directed to the database(s) to complete your report.\n\nSpecies: ${data.speciesName}\nLocation: ${data.location}\nType: ${data.speciesType}`);
+  });
+  
+  function buildiNaturalistUrl(data) {
+    const params = new URLSearchParams({
+      place_id: '6745', // Georgia place ID
+      taxon_name: data.speciesName,
+      observed_on: data.date
+    });
+    return `https://www.inaturalist.org/observations/new?${params.toString()}`;
+  }
+</script>
+
+</body>
+</html>
