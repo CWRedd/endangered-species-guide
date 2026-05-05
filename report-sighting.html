@@ -1,0 +1,476 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report a Sighting - Georgia Wildlife</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .form-section {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      border: 1px solid #e0e0e0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-section {
+        background: #2a2a2a;
+        border-color: #444;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-group label {
+        color: #ddd;
+      }
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        background: #3a3a3a;
+        color: #ddd;
+        border-color: #555;
+      }
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group small {
+      display: block;
+      margin-top: 6px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .form-group small {
+        color: #666;
+      }
+    }
+
+    .required {
+      color: #ef4444;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .file-upload-area {
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: #fafafa;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .file-upload-area {
+        background: #1a1a1a;
+        border-color: #555;
+      }
+    }
+
+    .file-upload-area:hover {
+      border-color: #6366f1;
+      background: #f0f4ff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .file-upload-area:hover {
+        background: #1f1f2e;
+      }
+    }
+
+    .file-upload-area input[type="file"] {
+      display: none;
+    }
+
+    .file-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .submit-button {
+      background: #6366f1;
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .submit-button:hover {
+      background: #4f46e5;
+    }
+
+    .submit-button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .success-message {
+      background: #dcfce7;
+      color: #166534;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 4px solid #22c55e;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .success-message {
+        background: #1a3a2a;
+        color: #86efac;
+      }
+    }
+
+    .error-message {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 4px solid #ef4444;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .error-message {
+        background: #3a1f1f;
+        color: #fca5a5;
+      }
+    }
+
+    .info-box {
+      background: #f0f9ff;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 4px solid #3b82f6;
+      margin-bottom: 30px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-box {
+        background: #1e3a4c;
+        border-color: #3b82f6;
+      }
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #1e40af;
+      font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-box p {
+        color: #93c5fd;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">Georgia Wildlife</a>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="invasive-species.html" class="nav-link">Invasive Species</a></li>
+      <li><a href="native-species.html" class="nav-link">Native Species</a></li>
+      <li><a href="identify-species.html" class="nav-link">Identify Species</a></li>
+      <li><a href="report-sighting.html" class="nav-link active">Report Sighting</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="header">
+  <h1>Report a Wildlife Sighting</h1>
+  <p>Help us document Georgia's wildlife by reporting your observations</p>
+</div>
+
+<div class="content">
+  <div class="section">
+    <div class="info-box">
+      <p>📍 Your sighting reports help us track wildlife populations and distribution in Georgia. Whether you spotted a native species, an invasive species, or an animal you couldn't identify, we'd love to hear about it!</p>
+    </div>
+
+    <div class="success-message" id="successMessage">
+      ✓ Thank you! Your sighting report has been submitted successfully. We appreciate your contribution to Georgia's wildlife documentation!
+    </div>
+
+    <div class="error-message" id="errorMessage">
+      ⚠ There was an error submitting your report. Please try again or contact us directly.
+    </div>
+
+    <form class="form-section" id="sightingForm" onsubmit="handleSubmit(event)">
+      
+      <h2 style="margin-top: 0; margin-bottom: 24px; font-size: 20px;">Sighting Details</h2>
+
+      <div class="form-group">
+        <label for="speciesName">Species Name or Description <span class="required">*</span></label>
+        <input type="text" id="speciesName" name="speciesName" placeholder="e.g., Black Bear, Unknown brown animal, Japanese Honeysuckle" required>
+        <small>If you don't know the exact species, describe what you saw</small>
+      </div>
+
+      <div class="form-group">
+        <label for="scientificName">Scientific Name (optional)</label>
+        <input type="text" id="scientificName" name="scientificName" placeholder="e.g., Ursus americanus">
+        <small>Include if known</small>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="sightingDate">Date of Sighting <span class="required">*</span></label>
+          <input type="date" id="sightingDate" name="sightingDate" required>
+        </div>
+        <div class="form-group">
+          <label for="sightingTime">Time of Sighting (optional)</label>
+          <input type="time" id="sightingTime" name="sightingTime">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="location">Location <span class="required">*</span></label>
+          <input type="text" id="location" name="location" placeholder="e.g., Lake Acworth, Stone Mountain, Near downtown Atlanta" required>
+          <small>City, park, or area name</small>
+        </div>
+        <div class="form-group">
+          <label for="speciesType">Species Type</label>
+          <select id="speciesType" name="speciesType">
+            <option value="">Not sure</option>
+            <option value="fauna">Fauna (Animal)</option>
+            <option value="flora">Flora (Plant)</option>
+            <option value="aquatic">Aquatic Species</option>
+            <option value="insect">Insect</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description <span class="required">*</span></label>
+        <textarea id="description" name="description" placeholder="Describe the organism in detail. Include color, size, distinctive features, behavior, habitat, or anything that stood out." required></textarea>
+        <small>Be as detailed as possible - this helps with identification</small>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Number of Organisms Seen</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" placeholder="1">
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Photo Upload (optional)</label>
+        <div class="file-upload-area" onclick="document.getElementById('photoInput').click()">
+          <div class="file-icon">📸</div>
+          <p><strong>Click to upload a photo</strong></p>
+          <p style="color: #999; font-size: 13px; margin: 0;">or drag and drop</p>
+          <input type="file" id="photoInput" name="photo" accept="image/*">
+        </div>
+        <small>JPG, PNG, or GIF (Max 5MB) - A clear photo helps with identification</small>
+      </div>
+
+      <h2 style="margin-top: 32px; margin-bottom: 24px; font-size: 20px;">Your Information</h2>
+
+      <div class="form-group">
+        <label for="name">Your Name (optional)</label>
+        <input type="text" id="name" name="name" placeholder="Your full name">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address (optional)</label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com">
+          <small>So we can follow up with identification results</small>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="consent">
+          <input type="checkbox" id="consent" name="consent" style="width: auto; margin-right: 8px;">
+          I consent to share my sighting report for research and educational purposes
+        </label>
+      </div>
+
+      <button type="submit" class="submit-button">Submit Sighting Report</button>
+    </form>
+
+    <div class="section" style="margin-top: 40px;">
+      <h2>Other Ways to Report</h2>
+      <p style="color: #666; margin-bottom: 20px;">
+        You can also contribute your wildlife observations through these platforms:
+      </p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>🌍 iNaturalist</h3>
+          <p>Join a global community of nature enthusiasts. Upload photos, get real-time identification feedback, and contribute to biodiversity data.</p>
+          <div class="resource-links">
+            <a class="resource-btn" href="https://www.inaturalist.org/places/georgia" target="_blank">Visit iNaturalist Georgia</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3>📞 Georgia DNR</h3>
+          <p>For wildlife concerns or to report invasive species sightings directly to state officials.</p>
+          <div class="resource-links">
+            <a class="resource-btn" href="https://www.georgiawildlife.com/" target="_blank">Contact Georgia DNR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Pre-fill species name if passed via URL parameter
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('species')) {
+    document.getElementById('speciesName').value = params.get('species');
+  }
+
+  // File upload handling
+  const fileUploadArea = document.querySelector('.file-upload-area');
+  const fileInput = document.getElementById('photoInput');
+
+  fileUploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fileUploadArea.style.borderColor = '#6366f1';
+    fileUploadArea.style.background = '#f0f4ff';
+  });
+
+  fileUploadArea.addEventListener('dragleave', () => {
+    fileUploadArea.style.borderColor = '#ddd';
+    fileUploadArea.style.background = '#fafafa';
+  });
+
+  fileUploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fileUploadArea.style.borderColor = '#ddd';
+    fileUploadArea.style.background = '#fafafa';
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      fileInput.files = files;
+      updateFileUploadDisplay();
+    }
+  });
+
+  fileInput.addEventListener('change', updateFileUploadDisplay);
+
+  function updateFileUploadDisplay() {
+    if (fileInput.files.length > 0) {
+      const fileName = fileInput.files[0].name;
+      fileUploadArea.innerHTML = `<div class="file-icon">✓</div><p><strong>${fileName}</strong></p><p style="color: #999; font-size: 13px; margin: 0;">Click to change file</p>`;
+    }
+  }
+
+  // Form submission
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // In a real application, this would send data to a server
+    // For now, we'll simulate the submission with localStorage
+
+    const formData = {
+      speciesName: document.getElementById('speciesName').value,
+      scientificName: document.getElementById('scientificName').value,
+      sightingDate: document.getElementById('sightingDate').value,
+      sightingTime: document.getElementById('sightingTime').value,
+      location: document.getElementById('location').value,
+      speciesType: document.getElementById('speciesType').value,
+      description: document.getElementById('description').value,
+      quantity: document.getElementById('quantity').value,
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      consent: document.getElementById('consent').checked,
+      submittedAt: new Date().toISOString()
+    };
+
+    // Store in localStorage (for demo purposes)
+    const reports = JSON.parse(localStorage.getItem('sightingReports') || '[]');
+    reports.push(formData);
+    localStorage.setItem('sightingReports', JSON.stringify(reports));
+
+    // Show success message
+    document.getElementById('successMessage').style.display = 'block';
+    document.getElementById('errorMessage').style.display = 'none';
+    
+    // Scroll to success message
+    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+    // Reset form
+    document.getElementById('sightingForm').reset();
+    fileUploadArea.innerHTML = `<div class="file-icon">📸</div><p><strong>Click to upload a photo</strong></p><p style="color: #999; font-size: 13px; margin: 0;">or drag and drop</p>`;
+    
+    // Hide success message after 8 seconds
+    setTimeout(() => {
+      document.getElementById('successMessage').style.display = 'none';
+    }, 8000);
+  }
+</script>
+
+</body>
+</html>
