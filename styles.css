@@ -772,6 +772,13 @@ body {
   font-size: 18px;
   margin-bottom: 20px;
   font-weight: 500;
+  color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .quiz-question h3 {
+    color: #f5f5f5;
+  }
 }
 
 .quiz-options {
@@ -826,44 +833,50 @@ body {
 }
 
 .quiz-result {
-  padding: 24px;
-  background: #f0f4ff;
-  border: 2px solid #bfdbfe;
+  padding: 32px;
+  background: #dbeafe;
+  border: 3px solid #3b82f6;
   border-radius: 12px;
   text-align: center;
   margin-top: 32px;
-  color: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
   .quiz-result {
-    background: #1a2847;
-    border-color: #0284c7;
-    color: #f5f5f5;
+    background: #1e3a8a;
+    border-color: #60a5fa;
   }
 }
 
 .quiz-result h3 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: #1a1a1a;
+  color: #1e40af;
+  font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
   .quiz-result h3 {
-    color: #f5f5f5;
+    color: #93c5fd;
   }
 }
 
 .quiz-result p {
-  color: #1a1a1a;
+  color: #1e40af;
   margin-bottom: 16px;
+  font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
   .quiz-result p {
-    color: #e5e7eb;
+    color: #dbeafe;
   }
+}
+
+.quiz-result a,
+.quiz-result button {
+  color: white;
+  background: #3b82f6;
 }
 
 /* Report Form Improvements */
@@ -914,12 +927,14 @@ body {
   transition: all 0.2s;
   text-align: center;
   background: white;
+  color: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
   .report-option {
     background: #1a1a1a;
     border-color: #333;
+    color: #f5f5f5;
   }
 }
 
@@ -950,30 +965,42 @@ body {
 }
 
 .submission-guide {
-  background: #e0f2fe;
-  border-left: 4px solid #0ea5e9;
+  background: #dbeafe;
+  border-left: 4px solid #3b82f6;
   padding: 16px;
   border-radius: 8px;
   margin-bottom: 20px;
-  color: #0c2d48;
+  color: #1e40af;
 }
 
 @media (prefers-color-scheme: dark) {
   .submission-guide {
-    background: #0c2d48;
-    border-left-color: #0284c7;
-    color: #e0f2fe;
+    background: #1e3a8a;
+    border-left-color: #60a5fa;
+    color: #dbeafe;
   }
 }
 
 .submission-guide h4 {
   margin-top: 0;
-  color: #0c2d48;
+  margin-bottom: 8px;
+  color: #1e40af;
+  font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
   .submission-guide h4 {
-    color: #e0f2fe;
+    color: #93c5fd;
+  }
+}
+
+.submission-guide p {
+  color: #1e40af;
+}
+
+@media (prefers-color-scheme: dark) {
+  .submission-guide p {
+    color: #dbeafe;
   }
 }
 
@@ -986,8 +1013,8 @@ body {
 
 .quick-submit-btn {
   padding: 12px;
-  border: 2px solid #ddd;
-  background: white;
+  border: 2px solid #3b82f6;
+  background: #dbeafe;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -995,22 +1022,30 @@ body {
   font-weight: 500;
   text-decoration: none;
   display: block;
-  color: #1a1a1a;
+  color: #1e40af;
 }
 
 @media (prefers-color-scheme: dark) {
   .quick-submit-btn {
-    background: #1a1a1a;
-    border-color: #333;
-    color: #f5f5f5;
+    background: #1e3a8a;
+    border-color: #60a5fa;
+    color: #dbeafe;
   }
 }
 
 .quick-submit-btn:hover {
-  border-color: #6366f1;
-  background: #6366f1;
+  border-color: #1e40af;
+  background: #3b82f6;
   color: white;
   transform: translateY(-2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .quick-submit-btn:hover {
+    border-color: #93c5fd;
+    background: #60a5fa;
+    color: #1e3a8a;
+  }
 }
 
 @media (max-width: 768px) {
