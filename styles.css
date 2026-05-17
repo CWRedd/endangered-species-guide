@@ -794,12 +794,14 @@ body {
   transition: all 0.2s;
   text-align: center;
   background: white;
+  color: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
   .quiz-option {
     background: #1a1a1a;
     border-color: #333;
+    color: #f5f5f5;
   }
 }
 
@@ -825,31 +827,42 @@ body {
 
 .quiz-result {
   padding: 24px;
-  background: white;
+  background: #f0f4ff;
+  border: 2px solid #bfdbfe;
   border-radius: 12px;
   text-align: center;
   margin-top: 32px;
+  color: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
   .quiz-result {
-    background: #1a1a1a;
+    background: #1a2847;
+    border-color: #0284c7;
+    color: #f5f5f5;
   }
 }
 
 .quiz-result h3 {
   font-size: 20px;
   margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .quiz-result h3 {
+    color: #f5f5f5;
+  }
 }
 
 .quiz-result p {
-  color: #666;
+  color: #1a1a1a;
   margin-bottom: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
   .quiz-result p {
-    color: #999;
+    color: #e5e7eb;
   }
 }
 
@@ -934,6 +947,70 @@ body {
   .form-help {
     color: #666;
   }
+}
+
+.submission-guide {
+  background: #e0f2fe;
+  border-left: 4px solid #0ea5e9;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #0c2d48;
+}
+
+@media (prefers-color-scheme: dark) {
+  .submission-guide {
+    background: #0c2d48;
+    border-left-color: #0284c7;
+    color: #e0f2fe;
+  }
+}
+
+.submission-guide h4 {
+  margin-top: 0;
+  color: #0c2d48;
+}
+
+@media (prefers-color-scheme: dark) {
+  .submission-guide h4 {
+    color: #e0f2fe;
+  }
+}
+
+.quick-submit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.quick-submit-btn {
+  padding: 12px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .quick-submit-btn {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #f5f5f5;
+  }
+}
+
+.quick-submit-btn:hover {
+  border-color: #6366f1;
+  background: #6366f1;
+  color: white;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

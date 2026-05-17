@@ -5,58 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Species - Georgia Wildlife Guide</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .submission-guide {
-      background: #e0f2fe;
-      border-left: 4px solid #0ea5e9;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .submission-guide {
-        background: #0c2d48;
-        border-left-color: #0284c7;
-      }
-    }
-
-    .submission-guide h4 {
-      margin-top: 0;
-    }
-
-    .quick-submit {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
-    }
-
-    .quick-submit-btn {
-      padding: 12px;
-      border: 2px solid #ddd;
-      background: white;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-      font-weight: 500;
-      text-decoration: none;
-      display: block;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .quick-submit-btn {
-        background: #1a1a1a;
-        border-color: #333;
-      }
-    }
-
-    .quick-submit-btn:hover {
-      border-color: #6366f1;
-      background: rgba(99, 102, 241, 0.1);
-    }
-  </style>
 </head>
 <body>
 
@@ -92,6 +40,11 @@
       <a href="https://www.inaturalist.org/observations/new" target="_blank" class="quick-submit-btn">📸 iNaturalist<br><small>General wildlife observations</small></a>
       <a href="https://www.eddmaps.org/report/index.cfm" target="_blank" class="quick-submit-btn">🚨 EDDMapS<br><small>Invasive species tracking</small></a>
       <a href="https://www.georgiawildlife.com/" target="_blank" class="quick-submit-btn">🐾 Georgia DNR<br><small>State wildlife agency</small></a>
+    </div>
+
+    <div class="submission-guide">
+      <h4>📝 Important Note</h4>
+      <p>To submit observations to any of these platforms, <strong>you'll need to create a free account</strong> if you don't already have one. This helps track who submitted observations and allows the community to verify identifications.</p>
     </div>
   </div>
 
@@ -257,12 +210,12 @@
         <p>Check that all information is accurate and complete. Photos and precise locations are especially helpful for identification.</p>
       </div>
       <div class="info-card">
-        <h3>2. Submit to Database</h3>
-        <p>You'll be directed to iNaturalist, EDDMapS, or the Georgia DNR to complete your official submission with your prepared data.</p>
+        <h3>2. Create Account</h3>
+        <p>Sign up for a free account on your chosen platform (iNaturalist, EDDMapS, or Georgia DNR). This only takes a few minutes!</p>
       </div>
       <div class="info-card">
-        <h3>3. Community Review</h3>
-        <p>Other naturalists and experts will help verify your identification and add insights to your observation.</p>
+        <h3>3. Submit to Database</h3>
+        <p>You'll be directed to the database to complete your official submission with your prepared data.</p>
       </div>
       <div class="info-card">
         <h3>4. Contribute to Science</h3>
@@ -304,7 +257,7 @@
     localStorage.setItem('lastSubmission', JSON.stringify(data));
     
     // Show confirmation
-    alert(`Your submission details have been prepared!\n\nSpecies: ${data.speciesName}\nLocation: ${data.location}\nDate: ${data.date}\nType: ${data.speciesType}\n\nYou'll be directed to ${data.submitTo === 'multiple' ? 'the databases' : 'the database'} to complete your report.`);
+    alert(`Your submission details have been prepared!\n\nSpecies: ${data.speciesName}\nLocation: ${data.location}\nDate: ${data.date}\nType: ${data.speciesType}\n\nYou'll be directed to ${data.submitTo === 'multiple' ? 'the databases' : 'the database'} to complete your report.\n\nRemember: You'll need a free account to submit!`);
   });
   
   function buildRedirectUrl(platform, data) {
