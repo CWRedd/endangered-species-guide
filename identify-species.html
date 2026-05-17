@@ -25,19 +25,20 @@
 
 <div class="header">
   <h1>Identify Species</h1>
-  <p>Found a species in Georgia? Help us document it and contribute to citizen science</p>
+  <p>Found a species in Georgia? Help us identify it and contribute to citizen science</p>
 </div>
 
 <div class="content">
   <div class="section">
-    <h2>How to Identify Species</h2>
+    <h2>Interactive Identification Quiz</h2>
     <p style="color: #666; margin-bottom: 20px;">
-      Whether you've spotted a bird, insect, plant, or mammal in Georgia, you can help contribute to scientific knowledge. 
-      Use the tools and resources below to identify what you've found and report your observation.
+      Answer a few simple questions and we'll help you narrow down what species you found. This quiz uses arrows and emoji for quick, visual identification.
     </p>
+    
+    <div id="quiz-container" class="quiz-container"></div>
   </div>
 
-  <div class="section">
+  <div class="section" style="margin-top: 40px;">
     <h2>Identification Tools</h2>
     <div class="info-grid">
       <div class="info-card">
@@ -65,125 +66,73 @@
         <h3>Cornell Lab of Ornithology</h3>
         <p>Expert bird identification guides and resources. Perfect for identifying Georgia's diverse bird species.</p>
         <div class="resource-links">
-          <a class="resource-btn" href="https://www.allaboutbirds.org/" target="_blank">All About Birds</a>
+          <a class="resource-btn" href="https://www.allaboutbirds.org/" target="_blank">Bird Guide</a>
+          <a class="resource-btn" href="https://www.macaulaylibrary.org/" target="_blank">Macaulay Library</a>
         </div>
       </div>
 
       <div class="info-card">
         <span class="badge">Tool</span>
-        <h3>Seek by iNaturalist</h3>
-        <p>Mobile app with AR camera that automatically identifies organisms in real-time. Great for on-the-field identification.</p>
+        <h3>Download Field Checklist</h3>
+        <p>Print our identification checklist with common Georgia species to take into the field for reference.</p>
         <div class="resource-links">
-          <a class="resource-btn" href="https://www.inaturalist.org/pages/seek_app" target="_blank">Download Seek</a>
+          <a class="resource-btn" href="javascript:downloadIdentificationChecklist()" target="_blank">📄 Download PDF</a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Report Your Sighting</h2>
+    <h2>Identification Tips</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">📸</div>
+        <h3>Take Clear Photos</h3>
+        <p>Multiple angles, good lighting, and close-ups of distinctive features help with accurate identification.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📍</div>
+        <h3>Note the Location</h3>
+        <p>Habitat information (forest, grassland, water) is crucial for narrowing down possibilities.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⏰</div>
+        <h3>Record the Time</h3>
+        <p>Season and time of day affect which species you're likely to encounter.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔍</div>
+        <h3>Look for Details</h3>
+        <p>Distinctive markings, colors, size, and behavior are key to identification.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📚</div>
+        <h3>Compare Similar Species</h3>
+        <p>Some species look very alike. Check field guides for look-alikes to be sure.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">👥</div>
+        <h3>Ask the Community</h3>
+        <p>Post on iNaturalist and let experienced observers help confirm your identification.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Ready to Report?</h2>
     <p style="color: #666; margin-bottom: 20px;">
-      Once you've identified a species, submit your observation to help track Georgia's wildlife populations and invasive species presence.
+      Once you've identified your species, report your sighting to contribute to scientific research and invasive species tracking.
     </p>
-    <div class="info-grid">
-      <div class="info-card">
-        <span class="badge">Report</span>
-        <h3>iNaturalist Submission</h3>
-        <p>The easiest way to report observations. Your data contributes to scientific research and helps track biodiversity trends.</p>
-        <div class="resource-links">
-          <a class="resource-btn" href="https://www.inaturalist.org/observations/new?place_id=6745" target="_blank">Report on iNaturalist</a>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="badge">Report</span>
-        <h3>Georgia DNR Invasive Species Report</h3>
-        <p>Report invasive species directly to Georgia's Department of Natural Resources for official tracking and management.</p>
-        <div class="resource-links">
-          <a class="resource-btn" href="https://gadnr.org/contactUs/" target="_blank">Contact DNR</a>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="badge">Report</span>
-        <h3>EDDMapS - Early Detection System</h3>
-        <p>Specialized system for mapping invasive species. Submit sightings to help track the spread of invasive organisms.</p>
-        <div class="resource-links">
-          <a class="resource-btn" href="https://www.eddmaps.org/" target="_blank">Report to EDDMapS</a>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="badge">Report</span>
-        <h3>Bugwood Network (UGA)</h3>
-        <p>University of Georgia's invasive species reporting system. Share photos and data to support research.</p>
-        <div class="resource-links">
-          <a class="resource-btn" href="https://www.bugwood.org/" target="_blank">Bugwood Network</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Quick Identification Guide</h2>
-    <div class="identification-guide">
-      <div class="guide-item">
-        <h3>Birds</h3>
-        <ul>
-          <li><strong>Size:</strong> Compare to common reference (sparrow, robin, hawk)</li>
-          <li><strong>Color patterns:</strong> Note distinctive markings and colors</li>
-          <li><strong>Behavior:</strong> Flying, perching, feeding patterns</li>
-          <li><strong>Habitat:</strong> Forest, open field, water, urban area</li>
-        </ul>
-        <a class="resource-btn" href="https://www.allaboutbirds.org/" target="_blank">Bird Identification Help</a>
-      </div>
-
-      <div class="guide-item">
-        <h3>Reptiles & Amphibians</h3>
-        <ul>
-          <li><strong>Body type:</strong> Snake, lizard, turtle, frog, salamander</li>
-          <li><strong>Scale patterns:</strong> Smooth, keeled, or other texture</li>
-          <li><strong>Head shape:</strong> Distinctive features</li>
-          <li><strong>Location found:</strong> Water, forest floor, tree, etc.</li>
-        </ul>
-        <a class="resource-btn" href="https://www.georgiawildlife.com/" target="_blank">GA Reptile Guide</a>
-      </div>
-
-      <div class="guide-item">
-        <h3>Insects & Spiders</h3>
-        <ul>
-          <li><strong>Number of legs:</strong> Insects (6), spiders (8), other</li>
-          <li><strong>Wing presence:</strong> Presence and type of wings</li>
-          <li><strong>Color & patterns:</strong> Distinctive markings</li>
-          <li><strong>Size:</strong> Approximate length</li>
-        </ul>
-        <a class="resource-btn" href="https://www.inaturalist.org/places/georgia?taxon_id=47126" target="_blank">Insects on iNaturalist</a>
-      </div>
-
-      <div class="guide-item">
-        <h3>Plants & Flora</h3>
-        <ul>
-          <li><strong>Leaf shape:</strong> Simple, compound, palmate</li>
-          <li><strong>Flower color & form:</strong> Distinctive features</li>
-          <li><strong>Stem type:</strong> Vines, shrubs, trees</li>
-          <li><strong>Habitat:</strong> Forest, field, wetland, urban</li>
-        </ul>
-        <a class="resource-btn" href="https://www.inaturalist.org/places/georgia?taxon_id=47125" target="_blank">Plants on iNaturalist</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Start Contributing Today</h2>
-    <p style="color: #666; margin-bottom: 20px;">
-      You don't need to be an expert to contribute! Citizen scientists like you help researchers understand Georgia's ecosystems, 
-      track invasive species, and protect native wildlife. Every observation counts.
-    </p>
-    <div style="text-align: center;">
-      <a href="https://www.inaturalist.org/observations/new?place_id=6745" class="resource-btn" style="padding: 12px 24px; font-size: 16px; background: #6366f1; color: white; border: none;" target="_blank">Start Your First Report</a>
+    <div class="resource-links" style="justify-content: center;">
+      <a class="resource-btn" href="report-species.html">Report Your Sighting</a>
+      <a class="resource-btn" href="native-species.html">View Native Species</a>
+      <a class="resource-btn" href="invasive-species.html">View Invasive Species</a>
     </div>
   </div>
 </div>
+
+<script src="js/pdf-generator.js"></script>
+<script src="js/identification-quiz.js"></script>
 
 </body>
 </html>
